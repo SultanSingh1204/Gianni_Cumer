@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.5.2/core.css">
+    <script defer type="module" src="https://pyscript.net/releases/2024.5.2/core.js"></script>
 </head>
 <body>
     <h1>Gay</h1>
@@ -14,15 +16,28 @@
         <button type="button" onclick="callPythonFunction()">Call Python Function</button>
     </form> 
 
-    <button type="button" onclick="showImg()">Show Your Img</button>
+    <form method="GET" action="" enctype="multipart/form-data">
+        <input id="imageinput" type="file" name="image" onchange="readUrl(this)">
+    </form> 
+
+    <img id="imagebox" src="">
 
     <script>
-        function showImg(){
-            let foto = document.getElementById('foto'); 
-            foto.src = "/workspaces/Gianni_Cumer/gianni_cumer_0.jpg"; 
+    function readUrl(input){
+        imagebox = document.getElementById('imagebox')
+        console.log("evoked readUrl")
+        if(input.files && input.files[0]){
+            let reader = new FileReader();
+            reader.onload = function(e){
+                // console.log(e)
+                imagebox.setAttribute('src', e.target.result)
+                imagebox.setAttribute('width', 300)
+                imagebox.setAttribute('height', 300)
+            }
+            reader.readAsDataURL(input.files[0]);
         }
+    }
     </script>
-    
     
     <script>
         function callPythonFunction() {

@@ -9,7 +9,9 @@ from skimage.feature import hog
 import numpy as np
 import asyncio
 
-async def ktm(): 
+from PIL import Image
+
+async def ktm(immagine): 
     # Parametri per ottenere l'HOG: devono essere gli stessi della classe HOG_TRANSFORMER (vedi file classify.py)
     orientations=9
     pixels_per_cell=(16, 16)
@@ -24,8 +26,12 @@ async def ktm():
     # Importo il classificatore:
     custom_classifier = joblib.load('cipo.pkl')
 
+    # Codice Sultanico:
+    image_classify = Image.open(immagine)
+    image_to_classify = np.asarray(image_classify)
+
     # Importo l'immagine da classificare:
-    image_to_classify =  io.imread("gianni_cumer_0.jpg" )
+    # image_to_classify =  io.imread("gianni_cumer_0.jpg" )
 
     # Eseguo trasformazioni:
     resized_image = resize(image_to_classify, (128, 128), anti_aliasing=True)
