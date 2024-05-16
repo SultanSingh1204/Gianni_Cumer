@@ -22,4 +22,4 @@ async def call_python_function():
     cyrus = await ktm()
     #print(cyrus)
 
-    return {'result': 'success'} 
+    return {'result': cyrus} 
