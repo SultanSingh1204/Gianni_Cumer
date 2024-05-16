@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Gay</h1>
+    <div id="gallyDiv"></div>
+    <img src="" id="foto" alt="">
+    
+    <form> 
+        <button type="button" onclick="callPythonFunction()">Call Python Function</button>
+    </form> 
+
+    <button type="button" onclick="showImg()">Show Your Img</button>
+
+    <script>
+        function showImg(){
+            let foto = document.getElementById('foto'); 
+            foto.src = "/workspaces/Gianni_Cumer/gianni_cumer_0.jpg"; 
+        }
+    </script>
+    
+    
+    <script>
+        function callPythonFunction() {
+            fetch('/call-python-function') 
+            .then(response => response.json()) 
+            .then(data => console.log(data)) 
+            .catch(error => console.error(error)); 
+        } 
+    </script>
+
+</body>
+</html>
